@@ -1,0 +1,1095 @@
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[english,russian]{babel}
+\RequirePackage{fullpage,soul}
+%\RequirePackage{graphicx}
+\newcounter{num}
+\newcommand*{\z}{\refstepcounter{num}\arabic{num}}
+
+\setul{3pt}{0.4pt}
+\newcommand*{\ulpar}[1]{\ul{#1}\leaders\hrule height -3pt depth 3.4pt\hfill\ \par}
+
+\pagestyle{empty}
+\@addtoreset{footnote}{page}
+\newcommand*{\@mymark}{\ifnum\thefootnote=1 *\else\ifnum\thefootnote=2 **\else ***\fi\fi}
+\def\@makefnmark{\hbox{\@textsuperscript{\normalfont\@mymark}}}
+\renewcommand{\@makefntext}[1]{\parindent=1em\noindent\hbox to 1.8em{\hss\@mymark}#1}
+
+\newcommand*{\fnt}{\small}
+\newcommand*{\FNT}{\it}
+
+\newcommand*{\bs}{\rule{0pt}{18pt}}
+\newcommand*{\myhrulefill}{\bs\hrulefill}
+
+\newcommand*{\smallbox}{\bs\underline{\hbox to 4ex{\hfil}}}
+\newcommand*{\medbox}{\bs\underline{\hbox to 12ex{\hfil}}\ }
+\newcommand*{\bigbox}{\bs\underline{\hbox to 24ex{\hfil}}\ }
+\newcommand*{\largebox}{\bs\underline{\hbox to 36ex{\hfil}}\ }
+\newcommand*{\fio}{(Фамилия,\,И.\,О.)}
+\newcommand*{\data}{<<\smallbox>>\,\bigbox 20\,\smallbox\,г.}
+\newcommand*{\myspace}{\hspace{-17pt}}
+
+\newlength{\my}
+\newlength{\all}
+\newlength{\tmp}
+\all=0.98\textwidth
+\my=0pt
+
+\newcommand*{\myover}[2]{
+    \settowidth{\my}{#1}
+    \vtop{\hbox{#1}\hbox to \my{\hfil\fnt #2 \hfil}}
+    \vspace{2pt}
+    \my=0pt
+}
+
+\newcommand*{\myov}[3]{
+    \settowidth{\my}{#1}
+    \vtop{\hbox{\underline{\hbox to \my{\hfil\FNT #3 \hfil}}}
+	\hbox to \my{\hfil\fnt #2 \hfil}}
+	\vspace{2pt}
+	\my=0pt
+}
+
+\newcommand*{\ebox}{\bs\underline{\hbox to \my{\hfil}}}
+\newcommand*{\myunder}[2]{
+    \settowidth{\tmp}{#1}
+    \addtolength{\my}{\all}
+    \addtolength{\my}{-1\tmp}
+#1\myover{\ebox}{#2}
+    \my=0pt
+}
+
+\newcommand*{\myund}[3]{
+    \settowidth{\tmp}{#1}
+    \addtolength{\my}{\all}
+    \addtolength{\my}{-1\tmp}
+#1
+    \vtop{\hbox{\underline{\hbox to \my{\hfil\FNT #3 \hfil}}}
+	\hbox to \my{\hfil\fnt #2 \hfil}}
+	\my=0pt
+}
+
+\renewcommand{\aa}[8]{
+
+    \begin{flushright}
+    Форма номер\,5-Тур
+	\end{flushright}
+
+    \bigskip
+
+	\hbox to \textwidth{
+	    \parbox{4cm}{
+		%\includegraphics{tssr.eps}
+	    }
+	    \hfil
+		\parbox{8cm}{
+		    \begin{center}
+		    \large ТУРИСТСКО-СПОРТИВНЫЙ СОЮЗ РОССИИ
+			\end{center}
+		}
+	    \hfil
+		\parbox{4cm}{
+		    %\includegraphics[scale=0.8]{kvt.eps}
+		}
+	}
+
+    \bigskip
+
+	\begin{center}
+    \Large МАРШРУТНАЯ КНИЖКА номер\smallbox \\
+	ТУРИСТСКОГО СПОРТИВНОГО ПОХОДА
+	\end{center}
+
+    \bigskip
+
+	\begin{flushright}
+    \parbox{51ex}{
+	Маршрутная книжка, не заверенная штампом маршрутно-квалификационной
+	    комиссии, недействительна.}
+    \end{flushright}
+
+    \bigskip\bigskip
+
+	\noindent\myhrulefill
+
+	\begin{center}\large\bf
+	1. Общие сведения
+	\end{center}
+
+    \noindent
+	\myspace
+	\myund{Группа туристов}{(организации, района, города)}{#1}
+
+    \medskip
+
+	\noindent
+	в составе \myov{\medbox}{}{#2} человек совершает с
+	\myov{\medbox}{}{#3} по \myov{\medbox}{}{#4}
+
+    \noindent
+	\myov{\medbox}{}{#5}\,г. \myov{\bigbox}{(вид туризма)}{#6}
+    поход \myov{\medbox}{}{#7} категории сложности
+
+	\noindent
+	в районе \myov{\largebox}{}{#8} по маршруту:
+}
+
+\newcommand{\ab}[5]{
+
+    {\it #1}
+
+    \bigskip
+
+	\noindent Руководитель группы \myov{\bigbox}{\fio}{#2}
+    дом.\ тел.\myov{\bigbox}{}{#3}
+
+    \noindent Зам. руководителя (для походов VI категории сложности\\
+	    и групп школьников) \myov{\bigbox}{\fio}{#4}
+    дом.\ тел.\myov{\bigbox}{}{#5}
+}
+
+\newcommand{\ba}{
+    \begin{center}\large\bf
+	2. Состав группы
+	\end{center}
+
+    \hspace{2pt}
+
+    \noindent
+	\begin{tabular}{p{0.03\textwidth}|p{0.45\textwidth}|%
+	    p{0.08\textwidth}|p{0.33\textwidth}}
+    \hline
+	\centerline{номер}\centerline{п/п}&%
+	\centerline{\bs Фамилия, Имя, Отчество}&Год рождения&%
+	Место работы (должность, тел.)\\
+	\hline
+}
+\newcommand{\bb}[3]{
+    \FNT\fnt \z\break {}&\FNT\fnt #1&\FNT\fnt #2&\FNT\fnt #3\\ \hline
+}
+\newcommand{\bbb}[3]{
+    \FNT\fnt \z&\FNT\fnt #1&\FNT\fnt #2&\FNT\fnt #3\\ \hline
+}
+\newcommand{\bc}[1]{
+    \end{tabular}
+
+#1
+
+    \vspace*{\fill}
+
+    Соответствие сведений о туристском и перевальном опыте руководителя и участников похода согласно справкам о зачете похода проверил\footnote{При очном рассмотрении замена участников заверяется на отдельном бланке штампом МКК, а при заочном - прикладывается письмо от МКК, направившей маршрутные документы на рассмотрение}
+
+    Член МКК \myover{\bigbox}{(подпись)} ( \myover{\bigbox}{\fio})
+}
+
+\newcommand{\ca}{
+    \noindent
+	\hspace{-2cm}
+    \begin{tabular}{p{0.34\textwidth}|p{0.43\textwidth}|%
+	p{0.22\textwidth}|p{0.11\textwidth}}
+    \hline
+	\rule{0pt}{14pt}Домашний адрес и телефон&%
+	\mbox{Туристская подготовка\footnotemark}\linebreak
+	Перечислить походы, со\-вер\-шен\-ные по данному виду туризма (У --- %
+		участником, Р --- руководителем) с указанием районов и категорий сложности&%
+	Обязанности в группе, распределение по средствам сплава %
+	и другим транспортным средствам&%
+	Роспись в знании Правил\footnotemark
+	\\
+	\hline
+}
+
+\newcommand{\cb}[3]{
+    \FNT\fnt #1&\FNT\fnt #2&\FNT\fnt #3&\break {}\\ \hline
+}
+\newcommand{\ccb}[3]{
+    \FNT\fnt #1&\FNT\fnt #2&\FNT\fnt #3&\\ \hline
+}
+
+\newcommand{\cc}{
+    \end{tabular}
+    \vfill
+
+	\refstepcounter{footnote} %Грязный хак. Почему-то ТеХ не прибавляет номер сносок тут (и он 0!)
+	\refstepcounter{footnote}
+    \footnotetext{Руководителем при рассмотрении предъявляются подлинники справок о совершенных
+	походах, выданных МКК. При заочном рассмотрении прилагаются списки ниток
+	    маршрутов, пройденных участниками, которые составляются на основании
+	    справок и заверяются нижестоящей МКК (или копии справок)\\
+	    Для маршрутов с классифицированными перевалами указать наименование и
+	    категорию наиболее сложных пройденных перевалов и их абсолютную высоту
+	    (при высоте заявленных перевалов более 5\,000 метров).}
+
+    \refstepcounter{footnote}
+    \footnotetext{Правила проведения туристских спортивных походов.}
+
+}
+
+\newcommand{\da}{
+    \begin{center}\large\bf
+	3.План похода (заявленный)\footnotemark
+	\end{center}
+
+    \footnotetext{В Разделе 3 исправления и исключения участков
+	маршрута не допускаются.}
+
+    \noindent
+	\begin{tabular}{l|p{0.06\textwidth}|p{0.51\textwidth}|l|p{0.20\textwidth}}
+    \hline
+	Даты&Дни пути&\centerline{\bs Участки маршрута}&Км&
+	Способы передвижения\\
+	\hline
+}
+
+\newcommand{\db}[5]{
+    \FNT #1&\FNT #2&\FNT #3&\FNT #4&\FNT #5\\ \hline
+}
+
+\newcommand{\dc}[1]{
+    \end{tabular}
+    \vfill
+
+	\myund{Итого активными способами передвижения:}{}{#1}
+
+    \smallskip
+}
+\newcommand{\ea}{
+    \begin{center}\Large\bf
+	4. План похода (согласованный с МКК)\footnotemark
+	\end{center}
+
+    \footnotetext{В случае внесения изменений маршрут записывается
+	в раздел 4 полностью. Если маршрут согласован в заявленном виде,
+	    делается запись: <<{}без изменений>>.}
+
+    \begin{tabular}{l|p{0.06\textwidth}|%
+	p{0.36\textwidth}|l|p{0.13\textwidth}|p{0.16\textwidth}}
+    \hline
+	Даты&Дни пути&\centerline{\bs Участки маршрута}&Км&
+	Способы передвижения&Отметки о прохождении маршрута\\
+	\hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline \bs &&&&\\ \hline
+	\bs &&&&\\ \hline \bs &&&&\\ \hline
+	\end{tabular}
+    \bigskip
+
+	Итого активными способами передвижения:\myhrulefill
+}
+
+\newcommand{\fa}[1]{
+    \begin{center}\Large\bf
+	5. Схема маршрута\footnotemark
+	\end{center}
+
+    \myhrulefill
+
+	\begin{center}
+#1
+    \end{center}
+
+    \vspace*{\fill}
+    \footnotetext{Для маршрутов I-III категорий сложности дается схема,
+	а для маршрутов IV-VI категорий сложности
+	    группа предоставляет копии картографического материала,
+	которым она будет пользоваться во время похода. Допускается вклейка готовых
+	    карт и схем с нанесенным маршрутом и местами ночевок}
+}
+
+\newcommand{\ga}[1]{
+    \begin{center}\Large\bf
+	6. Сложные участки маршрута и способы их преодоления\footnotemark
+	\end{center}
+
+    \myhrulefill
+
+    {\FNT #1}
+
+    \vspace*{\fill}
+
+    \footnotetext{При рассмотрении в МКК руководитель
+	группы предъявляет также схемы, фотографии и описания сложных участков.
+	    При заочном рассмотрении указанные материалы прилагаются. После
+	    рассмотрения в МКК они возвращаются руководителю группы. }
+}
+
+
+\newcommand{\ha}{
+    \begin{center}\Large\bf
+	7. Материальное обеспечение группы
+	\end{center}
+
+    \noindent Необходимый набор продуктов имеется.
+
+	\noindent Общественное и личное снаряжение в достаточном количестве
+	имеется.
+
+	\medskip
+
+	Специальное снаряжение:
+
+	\smallskip
+	\noindent
+	\begin{tabular}{|p{0.22\textwidth}|%
+	    p{0.22\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+    \hline
+	\multicolumn{2}{|l|}{\bs Групповое}&\multicolumn{2}{|l|}{Личное}\\
+	\hline
+	\centerline{\bs Наименование}&\centerline{Количество}&%
+	\centerline{Наименование}&\centerline{Количество}\\
+	\hline
+}
+
+\newcommand{\hb}[4]{
+    \FNT #1&\FNT #2&\FNT #3&\FNT #4\\ \hline
+}
+
+\newcommand{\hc}[7]{
+    \end{tabular}
+
+    \medskip
+
+	\noindent Необходимый ремонтный набор имеется.
+
+	\noindent Необходимый набор медицинской аптечки имеется.
+
+	\bigskip
+
+	Весовые характеристики груза, взятого на маршрут:
+
+	\medskip
+	\noindent
+	\begin{tabular}{|p{0.34\textwidth}|%
+	    p{0.28\textwidth}|p{0.28\textwidth}|}
+    \hline
+	\centerline{\bs Наименование}&%
+	\centerline{На одного человека}&%
+	\centerline{На группу в \myov{\smallbox}{}{#1} чел.}\\
+	\hline
+	Продукты (всего\,/\,в день)&\FNT #2\,кг&\FNT #3\,кг\\ \hline
+	Групповое снаряжение&&\FNT #4\,кг\\ \hline
+	Личное снаряжение&\FNT #5\,кг&\FNT #6\,кг\\ \hline
+	Всего&&\FNT #7\,кг\\ \hline
+	\end{tabular}
+}
+
+\newcommand{\hhc}[7]{
+    \end{tabular}
+
+    \medskip
+
+	\noindent Необходимый ремонтный набор имеется.
+
+	\noindent Необходимый набор медицинской аптечки имеется.
+
+	\bigskip
+
+	Весовые характеристики груза, взятого на маршрут:
+
+	\medskip
+	\noindent
+	\begin{tabular}{|p{0.34\textwidth}|%
+	    p{0.28\textwidth}|p{0.28\textwidth}|}
+    \hline
+	\centerline{\bs Наименование}&%
+	\centerline{На одного человека}&%
+	\centerline{На группу в \myov{\smallbox}{}{#1} чел.}\\
+	\hline
+	Продукты (всего\,/\,в день)&\FNT #2&\FNT #3\\ \hline
+	Групповое снаряжение&&\FNT #4\\ \hline
+	Личное снаряжение&\FNT #5&\FNT #6\\ \hline
+	Всего&&\FNT #7\\ \hline
+	\end{tabular}
+}
+
+
+\newcommand{\hd}[6]{
+    \bigskip
+
+	Максимальная нагрузка на одного мужчину \myov{\bigbox}{}{#1} кг.
+
+	\hspace{5.1cm}на одну женщину \myov{\bigbox}{}{#2} кг.
+
+	\bigskip
+
+	Сведения, изложенные в разделах 1-7, подтверждаю.
+
+	Руководитель похода
+	\myover{\bigbox}{(подпись)}(\myov{\bigbox}{\fio}{#3})
+
+	Дата
+	<<\myov{\smallbox}{}{#4}
+    >>\,\myov{\bigbox}{}{#5}
+    20\,\myov{\smallbox}{}{#6}\,г.
+}
+
+
+\newcommand{\ia}{
+    \begin{center}\Large\bf
+	8. Ходатайство МКК
+	\end{center}
+
+    \noindent
+	\myspace
+	\myunder{Председателю МКК}{(наименование вышестоящей МКК)}
+
+    \noindent
+	В связи с отсутствием полномочий у маршрутно-квалификационной комиссии\\
+	\myover{\bigbox}{(наименование)\vspace{2pt}}
+    просим Вас рассмотреть предоставляемые заявочные
+	материалы и дать по ним свое заключение.
+
+	\noindent Предварительное рассмотрение произведено нашей комиссией\\
+	\data
+
+	\noindent
+	Председатель МКК
+	\myover{\bigbox}{(подпись)}(\myover{\bigbox}{\fio})
+
+	\noindent
+	Штамп МКК
+
+	\vspace{1cm plus 10cm}
+
+    \begin{center}\Large\bf
+	9. Результаты рассмотрения маршрутно-квалификационной комиссии
+	\end{center}
+
+    \noindent
+	Маршрутно-квалификационная комиссия\myhrulefill
+
+	\noindent
+	\myspace
+	\myunder{}{(наименование комиссии)}
+
+    \noindent
+	\myspace
+	\myunder{в составе}{\fio}
+
+    \noindent
+	\myspace
+	\myunder{с участием}{\fio}
+
+    \noindent рассмотрев материалы заявленного похода группы под руководством
+	считает,
+	что (ненужное зачеркнуть):
+
+	    \noindent
+		\begin{enumerate}
+    \item{Маршрут соответствует
+	(не соответствует) заявленной категории сложности.}
+    \item{Туристский опыт руководителя группы соответствует
+	(не соответствует) технической сложности маршрута.}
+    \item{Туристский опыт участников группы соответствует
+	(не соответствует) технической сложности маршрута.}
+    \item{Заявочные материалы отвечают
+	(не отвечают) установленным требованиям.}
+    \item{Другие замечания: \myhrulefill
+
+	\noindent
+	    \myspace
+	    \myhrulefill}
+    \end{enumerate}
+
+    \pagebreak
+}
+\newcommand{\ja}[6]{
+	%%10
+
+	\noindent Группе назначается (не назначается) контрольная проверка на
+	местности
+
+	\noindent
+	\myspace
+	\myund{}{}{#1}
+	\myund{}{(где, когда, по каким вопросам)}{#2}
+
+    \begin{center}\Large\bf
+	10. Результаты проверки на местности
+	\end{center}
+
+    \noindent
+	\myspace
+	\myund{Группа в составе: руководитель}{\fio}{#3}
+
+    \noindent\myspace\myund{Участники}{}{#4}
+
+	\myund{}{}{#5}
+	\myund{}{}{#6}
+
+}
+\newcommand{\jb}[8]{
+	\noindent
+	\myspace
+	\myund{прошла проверку 
+	<<\myov{\smallbox}{}{#1}
+	>>\,\myov{\medbox}{}{#2}
+	20\,\myov{\smallbox}{}{#3}\,г.}{(место проведения)}{#4}
+
+    \noindent\myspace\myund{По следующим вопросам:}{}{#5}
+	\myund{}{}{#6}
+
+	\noindent\myspace\myund{Результаты проверки:}{}{#7}
+
+	\myund{}{}{#8}
+
+	\noindent{}Проверяющий
+	\myover{\bigbox}{(подпись)}
+    (\myover{\bigbox}{\fio})
+
+	\begin{center}\Large\bf
+	11. Заключение маршрутно-квалификационной комиссии
+	\end{center}
+
+    \noindent
+	\myspace
+	\myunder{Группа под руководством г.}{\fio}
+
+    \noindent имеет (не имеет) право совершить данный поход.
+
+	\noindent Особые указания:\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent Срок сдачи отчета о походе до\data
+
+	\noindent в объеме\myhrulefill
+
+	\noindent Группа обязана отправить сообщение по форме 6-Тур заказным
+	письмом и явиться (не явиться) по адресу: \myhrulefill
+
+	\noindent\myhrulefill
+
+	\pagebreak
+}
+\newcommand{\ka}[1]{
+	%%11
+
+	\begin{center}\Large\bf
+	12. Контрольные пункты и сроки
+	\end{center}
+
+    \noindent О прохождении маршрута группа должна сообщить #1:
+
+	\bigskip
+}
+\newcommand{\kba}[5]{
+	\noindent #1.\myov{\largebox}{кому}{#2} {#3}: \myov{\largebox}{}{#4}
+
+	\bigskip
+
+	\myund{}{}{#5}
+
+	\bigskip
+}
+\newcommand{\kbb}[4]{
+	\noindent из \myov{\largebox}{}{#1} <<\myov{\smallbox}{}{#2}>>\,\myov{\medbox}{}{#3} 20\,\myov{\smallbox}{}{#4}\,г.  \bigskip
+
+}
+
+
+\newcommand{\kc}{
+	\begin{flushright}
+    Председатель комиссии \myover{\bigbox}{(подпись)}
+    \end{flushright}
+
+    \begin{flushright}
+    Члены комиссии\largebox
+
+	\largebox
+
+	\largebox
+	\end{flushright}
+
+    \hbox to \textwidth{Штамп МКК\hfil \data}
+
+    \pagebreak
+
+	%%12
+
+	\begin{center}\Large\bf
+	13. Отметка ПСС, дополнительные указания, замечания:
+	\end{center}
+
+    \bigskip
+
+	\begin{flushright}
+    Штамп ПСС (ПСО)
+	\end{flushright}
+
+    \vspace{7cm plus 10cm}
+
+    \begin{center}\Large\bf
+	14. Решение о зачете похода
+	\end{center}
+
+    Поход оценен \medbox категорией сложности.
+
+	Справки выданы в количестве \medbox штук.
+
+
+	\begin{flushright}
+    Председатель МКК \myover{\largebox}{(подпись)}
+    \end{flushright}
+
+    \noindent
+	\hbox to \textwidth{\hfil
+	    \myover{\largebox}{\fio}}
+
+    \bigskip
+
+	\hbox to \textwidth{Штамп МКК\hfil \data}
+}
+\newcommand{\finish}{
+    \begin{center}\Large\bf
+	8. Ходатайство МКК
+	\end{center}
+
+    \noindent
+	\myspace
+	\myunder{Председателю МКК}{(наименование вышестоящей МКК)}
+
+    \noindent
+	В связи с отсутствием полномочий у маршрутно-квалификационной комиссии\\
+	\myover{\bigbox}{(наименование)\vspace{2pt}}
+    просим Вас рассмотреть предоставляемые заявочные
+	материалы и дать по ним свое заключение.
+
+	\noindent Предварительное рассмотрение произведено нашей комиссией\\
+	\data
+
+	\noindent
+	Председатель МКК
+	\myover{\bigbox}{(подпись)}(\myover{\bigbox}{\fio})
+
+	\noindent
+	Штамп МКК
+
+	\vspace{1cm plus 10cm}
+
+    \begin{center}\Large\bf
+	9. Результаты рассмотрения маршрутно-квалификационной комиссии
+	\end{center}
+
+    \noindent
+	Маршрутно-квалификационная комиссия\myhrulefill
+
+	\noindent
+	\myspace
+	\myunder{}{(наименование комиссии)}
+
+    \noindent
+	\myspace
+	\myunder{в составе}{\fio}
+
+    \noindent
+	\myspace
+	\myunder{с участием}{\fio}
+
+    \noindent рассмотрев материалы заявленного похода группы под руководством
+	считает,
+	что (ненужное зачеркнуть):
+
+	    \noindent
+		\begin{enumerate}
+    \item{Маршрут соответствует
+	(не соответствует) заявленной категории сложности.}
+    \item{Туристский опыт руководителя группы соответствует
+	(не соответствует) технической сложности маршрута.}
+    \item{Туристский опыт участников группы соответствует
+	(не соответствует) технической сложности маршрута.}
+    \item{Заявочные материалы отвечают
+	(не отвечают) установленным требованиям.}
+    \item{Другие замечания: \myhrulefill
+
+	\noindent
+	    \myspace
+	    \myhrulefill}
+    \end{enumerate}
+
+    \pagebreak
+
+	%%10
+
+	\noindent Группе назначается (не назначается) контрольная проверка на
+	местности
+
+	\noindent\myhrulefill
+
+	\noindent
+	\myspace
+	\myunder{}{(где, когда, по каким вопросам)}
+
+    \begin{center}\Large\bf
+	10. Результаты проверки на местности
+	\end{center}
+
+    \noindent
+	\myspace
+	\myunder{Группа в составе: руководитель}{\fio}
+
+    \noindent{}Участники\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent
+	\myspace
+	\myunder{прошла проверку \data}{(место проведения)}
+
+    \noindent{}По следующим вопросам:\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent{}Результаты проверки:\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent{}Проверяющий
+	\myover{\bigbox}{(подпись)}
+    (\myover{\bigbox}{\fio})
+
+	\begin{center}\Large\bf
+	11. Заключение маршрутно-квалификационной комиссии
+	\end{center}
+
+    \noindent
+	\myspace
+	\myunder{Группа под руководством г.}{\fio}
+
+    \noindent имеет (не имеет) право совершить данный поход.
+
+	\noindent Особые указания:\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent\myhrulefill
+
+	\noindent Срок сдачи отчета о походе до\data
+
+	\noindent в объеме\myhrulefill
+
+	\noindent Группа обязана отправить сообщение по форме 6-Тур заказным
+	письмом и явиться (не явиться) по адресу: \myhrulefill
+
+	\noindent\myhrulefill
+
+	\pagebreak
+
+	%%11
+
+	\begin{center}\Large\bf
+	12. Контрольные пункты и сроки
+	\end{center}
+
+    \noindent О прохождении маршрута группа должна сообщить по СМС:
+
+	\bigskip
+
+	\noindent 1.\myover{\largebox}{кому} по адресу: \myhrulefill
+
+	\bigskip
+
+	\noindent\myhrulefill
+
+	\bigskip
+
+	\noindent 2.\myover{\largebox}{кому} по адресу: \myhrulefill
+
+	\bigskip
+
+	\noindent\myhrulefill
+
+	\bigskip
+	\noindent 3.\myover{\largebox}{кому} по адресу: \myhrulefill
+
+	\bigskip
+
+	\noindent\myhrulefill
+
+	\bigskip
+
+	\noindent из\underline{\hspace{3cm plus 20cm}}\data
+	\bigskip
+
+	\noindent из\underline{\hspace{3cm plus 20cm}}\data
+	\bigskip
+
+	\noindent из\underline{\hspace{3cm plus 20cm}}\data
+	\bigskip
+
+	\noindent из\underline{\hspace{3cm plus 20cm}}\data
+
+	\begin{flushright}
+    Председатель комиссии \myover{\bigbox}{(подпись)}
+    \end{flushright}
+
+    \begin{flushright}
+    Члены комиссии\largebox
+
+	\largebox
+
+	\largebox
+	\end{flushright}
+
+    \hbox to \textwidth{Штамп МКК\hfil \data}
+
+    \pagebreak
+
+	%%12
+
+	\begin{center}\Large\bf
+	13. Отметка ПСС, дополнительные указания, замечания:
+	\end{center}
+
+    \bigskip
+
+	\begin{flushright}
+    Штамп ПСС (ПСО)
+	\end{flushright}
+
+    \vspace{7cm plus 10cm}
+
+    \begin{center}\Large\bf
+	14. Решение о зачете похода
+	\end{center}
+
+    Поход оценен \medbox категорией сложности.
+
+	Справки выданы в количестве \medbox штук.
+
+
+	\begin{flushright}
+    Председатель МКК \myover{\largebox}{(подпись)}
+    \end{flushright}
+
+    \noindent
+	\hbox to \textwidth{\hfil
+	    \myover{\largebox}{\fio}}
+
+    \bigskip
+
+	\hbox to \textwidth{Штамп МКК\hfil \data}
+}
+
+%------------------------
+
+
+
+
+
+\newcommand*{\spra}[1]{
+    \begin{center}
+    {\large СПРАВКА О ЗАЧЕТЕ ПОХОДА}
+    \end{center}
+
+    \hbox to 1\textwidth{
+	\hspace{1em}\parbox{7em}{}
+	\hfil
+	    \parbox{6em}{
+		Маршрутная\break
+		    книжка номер #1}
+	\hfill
+	    \parbox{30em}{\small Предоставляется в МКК при рассмотрении заявочных
+		материалов и при решении вопроса о присвоении спортивных разрядов и
+		    званий. Выдается МКК на основании маршрутной книжки и отчета о походе.}}
+	\bigskip
+}
+
+\newcommand*{\sprb}[9]{
+    \large{Выдана туристу \phantom{zzzzzzzzzz} \textbf{#1} }
+
+    \begin{center}\small
+    {(фамилия, имя, отчество)}
+    \end{center}
+
+    \begin{center}\small
+	\begin{tabular}{|l|l|l|l|l|c|l|l|}
+    \hline
+	Год и месяц & Район & Вид     & Средство & Км & Дней & Категория & Участие или\\
+	проведения  &       & туризма & передвижения &&      & сложности & руководство\\
+	\hline
+#2          &#3     &#4       &#5        &#6  &#7    & #8           & #9         \\
+	\hline
+	\end{tabular}
+    \end{center}
+}
+
+\newcommand*{\sprc}[2]{
+    \begin{center}
+    {\large МАРШРУТ ПОХОДА}
+    \end{center}
+
+#1
+
+    \begin{center}
+    (приводится подробная нитка маршрута)\hbox to 6cm{}
+    \end{center}
+    \medskip
+	\begin{center}
+    {\large ОСОБЫЕ ОТМЕТКИ МКК}
+
+    {\small (изменение категории сложности похода, незачет руководства им,
+	    запрет\hbox to 6cm{}
+
+	    участия в походах или руководства походами, без права зачета на разряд)}
+    \hbox to 6cm{}
+    \end{center}
+    \bigskip
+	\hbox to 1\textwidth{\hrulefill}
+    \bigskip \bigskip
+	\small
+	\hbox to 1\textwidth{
+	    \parbox{13em}{Отметка о сдаче и местонахождении отчета о походе
+	    }\hfil
+	    <<\underline{\phantom{6666}}>> #2\,г.\hfil
+		Председатель МКК\hbox to 4cm{\hrulefill}
+	}
+}
+
+\newcommand*{\prota}[8]{
+    \hbox to \textwidth{
+	(лицевая сторона)\hfil
+	    \parbox{6cm}{Приложение 7\\
+		к приказу Центрального совета\\
+		    по туризму и экскурсиям\\
+		    11 февраля 1988\,г. номер 40
+	    }}
+
+    \begin{center}
+    \bf
+	ПРОТОКОЛ МАРШРУТНО-КВАЛИФИКАЦИОННОЙ КОМИССИИ\\
+	О ПРИСВОЕНИИ СПОРТИВНОГО РАЗРЯДА (ЗВАНИЯ) ПО ТУРИЗМУ
+	\end{center}
+
+    \hbox to \textwidth{
+	<<{}{\FNT #1}>>\myov{\bigbox}{}{#2}{\FNT #3}\,г.
+	    \hfil
+	    гор.\myov{\bigbox}{}{#4}
+    }
+
+    \myund{Маршрутно-квалификационная комиссия}
+    {(наименование организации, при которой работает МКК)}{#5}
+    рассмотрела материалы на присвоение \myov{\medbox}{}{#6}
+    спортивного разряда (звания) по туризму спортсмену
+	\myund{}{(коллектив физкультуры)}{#7}
+    гр.\myov{\largebox}{(фамилия, инициалы)}{#8},
+	поступившие
+	    <<{}{\FNT #1}>>\myov{\bigbox}{}{#2}{\FNT #3}\,г.
+}
+
+\newcommand*{\protb}[3]{
+    1.Предыдущий разряд присвоен в #1 году.
+
+	2.Нормы комплекса ГТО выполнил(а) в #2 году.
+
+	3.Звание инструктора туризма присвоено в #3 году.
+
+	4.Сведения о совершенных походах (заполняются в хронологическом порядке сверху
+		вниз в соответствии с подлинниками справок о зачете походов; в соответствующей
+		клетке проставляется знак Х, в случае несоответствия категории сложности похода
+		в нужную клетку проводится стрелка от знака X);
+
+    \begin{center}
+    \begin{tabular}{|r|c|p{0.15\textwidth}|c|%
+	p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|%
+	    p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|%
+	    p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|p{0.015\textwidth}|}
+    \hline
+	номерномер&Год и месяц&Район&Вид&
+	\multicolumn{12}{|c|}{Категория сложности похода}\\
+	п/п&проведения&похода&туризма&
+	\multicolumn{12}{|c|}{и обязанности в группе.}\\
+	\cline{5-16}
+    &похода& & &\multicolumn{2}{|c|}{I}&\multicolumn{2}{|c|}{II}&
+	\multicolumn{2}{|c|}{III}  &\multicolumn{2}{|c|}{IV}&
+	\multicolumn{2}{|c|}{V}    &\multicolumn{2}{|c|}{VI}\\
+	\cline{5-16}
+    & & & &у&р&у&р&у&р&у&р&у&р&у&р\\
+	\hline
+}
+
+\newcommand*{\protc}[3]{
+    \z & #1 & #2 & #3 &&&&&&&&&&&&\\ \hline
+}
+
+\newcommand*{\protd}[2]{
+    \end{tabular}
+    \end{center}
+
+    Виды туризма обозначаются буквами: пешеходный --- П, лыжный --- Л, горный --- Г,
+	водный --- В, вело --- Вел., авто --- А, мото --- М, спелео --- Сп.
+	    Буквой <<{}у>>{} обозначается
+	    слово <<{}участник>>{}, буквой <<{}р>>{} --- <<{}руководитель>>{}.
+
+	    \newpage
+
+	    \begin{center}
+    (оборотная сторона)
+	\end{center}
+
+    5. Оценка перечисленных походов (правильность их категорирования, допустимость
+	    зачета по последовательности накопления туристского опыта, соответствие
+	    оформления похода установленным правилам, полномочиям МКК и т.п.):
+	\myhrulefill
+
+	 \noindent\myhrulefill
+
+	     \noindent\myhrulefill
+
+	     \noindent\myhrulefill
+
+	     6. Оценка представленных отчетов (если отчет неудовлетворительный, ссылка на
+		     прилагаемую рецензию с указанием фамилии рецензента):
+
+		 \noindent\myhrulefill
+
+		     \noindent\myhrulefill
+
+		     \noindent\myhrulefill
+
+		     7. Другие замечания:\myhrulefill
+
+		     \noindent\myhrulefill
+
+		     \noindent\myhrulefill
+
+		     \noindent\myhrulefill
+
+		     8. Выводы (в случае отрицательного решения его краткая мотивировка и
+			     рекомендации по дополнительным действиям, необходимым для выполнения
+			     норматива):\myhrulefill
+
+					 \noindent\myhrulefill
+
+					     \noindent\myhrulefill
+
+					     \noindent\myhrulefill
+
+					     \noindent\myhrulefill
+
+					     9. МКК, рассмотрев представленные материалы, считает что
+					     гр.\myov{\bigbox}{}{#1} (не) выполнил требования Единой всесоюзной спортивной
+					     классификации и ему (ей) может (не может) быть присвоен \myov{\medbox}{}{#2}
+    спортивный разряд (звание) по туризму.
+
+	\begin{flushright}
+    Председатель МКК \myover{\bigbox}{}(\myover{\bigbox}{})\\
+	Члены МКК        \myover{\bigbox}{}(\myover{\bigbox}{})\\
+	.      \myover{\bigbox}{}(\myover{\bigbox}{})\\
+	Отв. секретарь МКК
+	\myover{\bigbox}{(подпись)}(\myover{\bigbox}{(фамилия, инициалы)})\\
+	\end{flushright}
+
+    \begin{center}
+    Штамп МКК
+	\end{center}
+}
+
+
